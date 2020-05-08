@@ -23,7 +23,8 @@ class Deck
     end
 
     def remove_card
-        cards.pop
+        cards.shift
+        return cards
     end
 
     def add_card(card)
