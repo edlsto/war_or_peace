@@ -42,7 +42,7 @@ class PlayerTest < Minitest::Test
     assert_equal @player.hasLost?, false
   end
 
-  def test_hasnt_lost_game
+  def test_has_lost_game
     @player.deck.remove_card
     @player.deck.remove_card
     @player.deck.remove_card
