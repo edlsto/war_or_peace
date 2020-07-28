@@ -6,7 +6,7 @@ class Player
         @deck = deck
     end
 
-    def hasLost?
+    def has_lost?
         @deck.cards.length === 0
     end
 end
