@@ -3,6 +3,7 @@ require './lib/deck'
 require './lib/card'
 require './lib/player'
 require './lib/turn'
+require './lib/game'
 
 @card1 = Card.new(:diamonds, '2', 2)
 @card2 = Card.new(:diamonds, '3', 3)
@@ -57,19 +58,28 @@ require './lib/turn'
 @card51 = Card.new(:spades, 'King', 13)
 @card52 = Card.new(:spades, 'Ace', 14)
 
-cards = [@card1, @card2, @card3, @card4, @card5, @card6, @card7, @card8, @card9, @card10, @card11, @card12, @card13, @card14, @card15, @card16, @card17, @card18, @card19, @card20, @card21, @card22, @card23, @card24, @card25, @card26, @card27, @card28, @card29, @card30, @card31, @card32, @card33, @card34, @card35, @card36, @card37, @card38, @card39, @card40, @card41, @card42, @card43, @card44, @card45, @card46, @card47, @card48, @card49, @card50, @card51, @card52]
+cards = [@card1, @card2, @card3, @card4, @card5, @card6, @card7, @card8, @card9, @card10, @card11, @card12, @card13, @card14, @card15, @card16, @card17, @card18, @card19, @card20, @card21, @card22, @card23, @card24, @card25, @card26, @card27, @card28, @card29, @card30, @card31, @card32, @card33, @card34, @card35, @card36, @card37, @card38, @card39, @card40, @card41, @card42, @card43, @card44, @card45, @card46, @card47, @card48, @card49, @card50, @card51, @card52].shuffle
 
-@deck = Deck.new(cards.shuffle)
-
+@deck1 = Deck.new(cards.slice(0, 26))
+@deck2 = Deck.new(cards.slice(26, 52))
 
 
 puts("Welcome to War! (or Peace) This game will be played with 52 cards.")
+puts("Enter the first player's name:")
+name1 = gets.chomp
+@player1 = Player.new(name1, @deck1)
 
-puts("The players today are Megan and Aurora.")
+puts("Enter the second player's name:")
+name2 = gets.chomp
+@player2 = Player.new(name2, @deck2)
+puts(@player1.deck.cards.length)
+puts(@player2.deck.cards.length)
+puts("The players today are #{name1} and #{name2}.")
 puts("Type 'GO' to start the game!")
 puts("------------------------------------------------------------------")
 name = gets.chomp
+
 if (name.chomp == 'GO') 
-    p('HI!!')
-    p(@deck)
+    game = Game.new(@player1, @player2)
+    game.start
 end
